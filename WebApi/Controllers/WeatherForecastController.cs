@@ -13,8 +13,8 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private IOptions<Options> _options;
-        //private Options _options;
+        //private IOptions<Options> _options;
+        private Options _options;
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -23,15 +23,15 @@ namespace WebApi.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger,
-            //IConfiguration configuration//,
+            IConfiguration configuration//,
             //Options options
             //IOptions<Options> options
-            IOptionsSnapshot<Options> options
+            //IOptionsSnapshot<Options> options
             )
         {
             //var someParam = configuration["someParam"];
             //var optParam = configuration.Get<Options>();
-            _options = options;
+            //_options = options;
         }
 
         [HttpGet]
