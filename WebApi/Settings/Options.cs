@@ -4,7 +4,7 @@ namespace WebApi.Settings
 {
     public class Options
     {
-        //[MinLength(20)]
+        [MaxLength(5)]
         public string SomeParam { get; set; }
 
         public RedisOptions RedisOptions { get; set; }

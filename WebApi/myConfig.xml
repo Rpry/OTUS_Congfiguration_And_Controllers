@@ -11,5 +11,5 @@
             <Microsoft>Warning</Microsoft>
         </LogLevel>
     </Logging>
-    <someParam>custom_xml</someParam>
+    <someParam>value from myConfig.xml</someParam>
 </configuration>

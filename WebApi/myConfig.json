@@ -1,7 +1,7 @@
 {
-  "SomeParam": "custom_json",
+  "SomeParam": "value from myConfig2.json",
   "RedisOptions": {
     "Login": "redis_dev",
-    "Password": "pass_dev3"
+    "Password": "pass_dev"
   }
 }

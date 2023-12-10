@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -6,8 +7,8 @@ using Microsoft.Extensions.Logging;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("WeatherForecast2")]
-    //[Route("[controller]")]
+    //[Route("WeatherForecast2")]
+    [Route("[controller]")]
     public class WeatherForecast2Controller: ControllerBase
     {
         private readonly ILogger<WeatherForecast2Controller> _logger;
@@ -17,40 +18,47 @@ namespace WebApi.Controllers
             _logger = logger;
         }
         
-        [HttpGet("/{id}")]
-        //[HttpGet()]
-        public async Task<IActionResult> Get(string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(string id)
         {
             //TODO: получение прогноза погоды по идентификатору
             return await Task.FromResult(Ok());
         }
         
-        //[HttpPost("Add")]
-        [HttpPost]
-        public async Task<IActionResult> Add(WeatherForecast weatherForecast)
+        [HttpGet("{id}/{b}")]
+        public async Task<IActionResult> GetAsync(string id, int b)
         {
-            //TODO: добавление прогноза погоды
+            //TODO: получение прогноза погоды по идентификатору
             return await Task.FromResult(Ok());
+        }
+        
+        //[HttpPost("")]
+        [HttpPost]
+        public async Task<IActionResult> AddAsync(WeatherForecast weatherForecast)
+        {
+            int id = 1;
+            return await Task.FromResult(Ok(id));
         }
 
         //[HttpPut("Edit")]
-        [HttpPut]
-        public async Task<IActionResult> Edit(WeatherForecast weatherForecast)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditAsync(WeatherForecast weatherForecast)
         {
+            //throw new Exception("text");
             //TODO: редактирование прогноза погоды
             return await Task.FromResult(Ok());
         }
 
-        //[HttpDelete("Delete")]
+        //[HttpPost("Delete")]
         [HttpDelete("{id:min(1)}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             //TODO: удаление прогноза погоды
             return await Task.FromResult(Ok());
         }
         
         [HttpGet("list/{page}/{itemsPerPage}")]
-        public async Task<IActionResult> GetList(int page, int itemsPerPage)
+        public async Task<IActionResult> GetListAsync(int page, int itemsPerPage)
         {
             //TODO: получение списка прогнозов погоды
             return await Task.FromResult(Ok());

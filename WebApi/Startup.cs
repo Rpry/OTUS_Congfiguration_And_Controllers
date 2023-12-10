@@ -21,13 +21,14 @@ namespace WebApi
         {
             services.AddControllers();
 
-            //var someParam = Configuration["someParam"];
+            var someParam = Configuration["someParam"];
             //var options = Configuration.Get<Options>();
             //services.AddSingleton(options);
 
-            services.AddOptions<Options>().Bind(Configuration);
-            //.ValidateDataAnnotations();
-
+            services.AddOptions<Options>()
+                .Bind(Configuration);
+                //.ValidateDataAnnotations();
+            
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
         }
@@ -56,8 +57,8 @@ namespace WebApi
                     c.RoutePrefix = string.Empty;
                 });
             }
-            app.UseAuthorization();
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

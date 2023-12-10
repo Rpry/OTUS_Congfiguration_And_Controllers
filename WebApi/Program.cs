@@ -18,11 +18,11 @@ namespace WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                    webBuilder.ConfigureAppConfiguration((hostingContext, configurationBuilder) =>
                     {
-                        config.AddXmlFile("myConfig.xml", optional: false, reloadOnChange: true);
-                        config.AddJsonFile("myConfig.json", optional: true, reloadOnChange: true);
-                        config.AddInMemoryCollection(new Dictionary<string, string>
+                        configurationBuilder.AddXmlFile("myConfig.xml", optional: false, reloadOnChange: true); 
+                        configurationBuilder.AddJsonFile("myConfig.json", optional: true, reloadOnChange: true);
+                        configurationBuilder.AddInMemoryCollection(new Dictionary<string, string>
                         {
                             {"StartedAtUtc", DateTime.UtcNow.ToString("O")}
                         });
