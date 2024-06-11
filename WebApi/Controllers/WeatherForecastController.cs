@@ -13,7 +13,8 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private IOptions<Options> _options;
+        private IOptionsMonitor<Options> _options;
+        //private IOptions<Options> _options;
         //private Options _options;
         private static readonly string[] Summaries = new[]
         {
@@ -26,7 +27,7 @@ namespace WebApi.Controllers
             //IConfiguration configuration
             //Options options
             //IOptions<Options> options
-            IOptionsSnapshot<Options> options
+            IOptionsMonitor<Options> options
             )
         {
             //var someParam = configuration["someParam"];

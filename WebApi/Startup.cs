@@ -21,13 +21,13 @@ namespace WebApi
         {
             services.AddControllers();
 
-            var someParam = Configuration["someParam"];
+            //var someParam = Configuration["someParam"];
             //var options = Configuration.Get<Options>();
             //services.AddSingleton(options);
+            var sect = Configuration.GetSection("RedisOptions");
 
             services.AddOptions<Options>()
-                .Bind(Configuration);
-                //.ValidateDataAnnotations();
+                .Bind(Configuration);//.ValidateDataAnnotations();
             
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();

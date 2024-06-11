@@ -18,6 +18,8 @@ namespace WebApi.Controllers
             _logger = logger;
         }
         
+        //[HttpGet("GetWeatherForecast/{id}")]
+        //[HttpGet("Get/{id}")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(string id)
         {
@@ -25,14 +27,6 @@ namespace WebApi.Controllers
             return await Task.FromResult(Ok());
         }
         
-        [HttpGet("{id}/{b}")]
-        public async Task<IActionResult> GetAsync(string id, int b)
-        {
-            //TODO: получение прогноза погоды по идентификатору
-            return await Task.FromResult(Ok());
-        }
-        
-        //[HttpPost("")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(WeatherForecast weatherForecast)
         {
