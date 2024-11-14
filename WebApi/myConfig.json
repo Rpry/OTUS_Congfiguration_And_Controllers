@@ -1,5 +1,5 @@
 {
-  "SomeParam": "value from myConfig.json2",
+  "SomeParam": "value from myConfig.json",
   "RedisOptions": {
     "Login": "redis_dev",
     "Password": "pass_dev"

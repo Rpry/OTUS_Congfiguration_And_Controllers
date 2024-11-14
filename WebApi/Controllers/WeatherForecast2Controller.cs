@@ -1,15 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace WebApi.Controllers
 {
     [ApiController]
-    //[Route("WeatherForecast2")]
+    //[Route("weatherForecast2")]
     [Route("[controller]")]
-    public class WeatherForecast2Controller: ControllerBase
+    public class WeatherForecast2Controller : ControllerBase
     {
         private readonly ILogger<WeatherForecast2Controller> _logger;
 
@@ -17,16 +18,31 @@ namespace WebApi.Controllers
         {
             _logger = logger;
         }
+
+        [ProducesResponseType(typeof(WeatherForecast), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(EmptyResult), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(EmptyResult),StatusCodes.Status400BadRequest)]
         
         //[HttpGet("GetWeatherForecast/{id}")]
         //[HttpGet("Get/{id}")]
-        [HttpGet("{id}")]
+        [HttpGet()]
         public async Task<IActionResult> GetAsync(string id)
         {
             //TODO: получение прогноза погоды по идентификатору
             return await Task.FromResult(Ok());
         }
         
+        /// <summary>
+        /// Add weather forecast
+        /// </summary>
+        /// <param name="weatherForecast"> object of weatherforecast type </param>
+        /// <returns> Weather forecast identifier (int) </returns>
+        /// <remarks>
+        ///    <i>Example POST:</i><br /> /weatherforecast
+        /// </remarks>
+        /// <response code="200"> Weather forecast identifier (int) </response>
+        /// <response code="404"></response>
+        /// <response code="400"></response>
         [HttpPost]
         public async Task<IActionResult> AddAsync(WeatherForecast weatherForecast)
         {
